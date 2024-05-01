@@ -27,7 +27,7 @@ _(R = 191,  G = 154, B = 208)_
 
 
 ## Project Structure
-./myenv
-./output
-./images
+./myenv <br>
+./output <br>
+./images <br>
 main.py
