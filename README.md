@@ -22,9 +22,11 @@ pip install -r requirements.txt
 deactivate
 ```
 
-## Filter Needed
+## Filter Results
 _(R = 191,  G = 154, B = 208)_
 
+## Filter Needed For Results
+_(R = 42, G = -82, B = 98)_
 
 ## Project Structure
 ./myenv <br>

@@ -12,14 +12,26 @@ desired_height = 400
 ## Resize the image
 resized_image = cv.resize(original_img, (desired_width, desired_height))
 
-## Apply filter by manipulating color channels
-custom_filter = np.zeros_like(resized_image)
-custom_filter[:, :, 0] = 191             # Set the blue channel to 191 
-custom_filter[:, :, 1] = 154             # Set the green channel to 154
-custom_filter[:, :, 2] = 208             # Set the red channel to 208
+
+
+## Define the custom filter (R = 191,  G = 154, B = 208)
+custom_filter_beta = np.zeros_like(resized_image)
+custom_filter_beta[:, :, 0] = 191             # Set the blue channel to 191 
+custom_filter_beta[:, :, 1] = 154             # Set the green channel to 154
+custom_filter_beta[:, :, 2] = 208             # Set the red channel to 208
 
 ## Apply the custom RGB filter to the image
-custom_filter_image = cv.addWeighted(resized_image, 0.7, custom_filter, 0.3, 0)
+custom_filter_image_beta = cv.addWeighted(resized_image, 0.7, custom_filter_beta, 0.3, 0)
+
+## Define the custom filter (R = 42, G = -82, B = 98)
+custom_filter_alfa = np.zeros_like(resized_image)
+custom_filter_alfa[:, :, 0] = np.clip(42, 0, 255)  # Clip to ensure the value is within the valid range
+custom_filter_alfa[:, :, 1] = np.clip(255 - 82, 0, 255)  # Adjusted green channel
+custom_filter_alfa[:, :, 2] = np.clip(98, 0, 255)  # Clip to ensure the value is within the valid range
+
+## Apply the custom RGB filter to the image
+custom_filter_image_alfa = cv.addWeighted(resized_image, 0.7, custom_filter_alfa, 0.3, 0)
+
 
 ## Alternative without the green color
 purple_filter_image = np.zeros_like(resized_image)
@@ -30,12 +42,14 @@ purple_filter_image[:, :, 2] = resized_image[:, :, 2]  # Keep the red channel as
 ## Save Images
 # Save the original and filtered images
 cv.imwrite('./output/original_image.jpg', resized_image)
-cv.imwrite('./output/custom_filtered_image.jpg', custom_filter_image)
+cv.imwrite('./output/custom_filtered_image.jpg', custom_filter_image_beta)
+cv.imwrite('./output/custom_filtered_image.jpg', custom_filter_image_alfa)
 cv.imwrite('./output/purple_filtered_image.jpg', purple_filter_image)
 
 ## Show the images
 cv.imshow('Original Image', resized_image)
-cv.imshow('Filtered Image', custom_filter_image)
+cv.imshow('Filtered Image Alfa', custom_filter_image_alfa)
+cv.imshow('Filtered Image Beta', custom_filter_image_beta)
 cv.imshow('Purple Image', purple_filter_image)
 cv.waitKey(0)
 cv.destroyAllWindows()
