@@ -24,3 +24,10 @@ deactivate
 
 ## Filter Needed
 _(R = 191,  G = 154, B = 208)_
+
+
+## Project Structure
+./myenv
+./output
+./images
+main.py
