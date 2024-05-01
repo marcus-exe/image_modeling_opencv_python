@@ -25,15 +25,19 @@ transformation_matrix = np.array([[-1, 0, new_width],
 
 # Apply the perspective transformation to the image
 inverted_img = cv.warpPerspective(resized_img, transformation_matrix, (new_width, new_height))
+ 
+not_inverted_img = cv.warpPerspective(inverted_img, transformation_matrix, (new_width, new_height))
 
 # Display the original and inverted images
 cv.imshow('Original Image', resized_img)
 cv.imshow('Inverted Image (Convex Lens Effect)', inverted_img)
+cv.imshow('Not Inverted Image', not_inverted_img)
 
 ## Save Images
 # Save the original and filtered images
 cv.imwrite('./output/tests/original_image.jpg', resized_img)
 cv.imwrite('./output/tests/inverted_image.jpg', inverted_img)
+cv.imwrite('./output/tests/not_inverted_image.jpg', not_inverted_img)
 
 cv.waitKey(0)
 cv.destroyAllWindows()
