@@ -56,11 +56,11 @@ purple_filter_image[:, :, 2] = resized_image[:, :, 2]  # Keep the red channel as
 
 ## Save Images
 # Save the original and filtered images
-cv.imwrite('./output/original_image.jpg', resized_image)
-cv.imwrite('./output/custom_filtered_image_beta.jpg', custom_filter_image_beta)
-cv.imwrite('./output/custom_filtered_image_alfa.jpg', custom_filter_image_alfa)
-cv.imwrite('./output/custom_filtered_image_omega.jpg', custom_filter_image_omega)
-cv.imwrite('./output/purple_filtered_image.jpg', purple_filter_image)
+cv.imwrite('./output/tests/original_image.jpg', resized_image)
+cv.imwrite('./output/tests/custom_filtered_image_beta.jpg', custom_filter_image_beta)
+cv.imwrite('./output/tests/custom_filtered_image_alfa.jpg', custom_filter_image_alfa)
+cv.imwrite('./output/tests/custom_filtered_image_omega.jpg', custom_filter_image_omega)
+cv.imwrite('./output/tests/purple_filtered_image.jpg', purple_filter_image)
 
 ## Show the images
 cv.imshow('Original Image', resized_image)
